@@ -6,6 +6,8 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:8000',
   loginUrl: '/auth/login/',
+  refreshUrl: '/auth/token-refresh/',
+  restaurantUrl: '/restaurant/',
 };
 
 /*

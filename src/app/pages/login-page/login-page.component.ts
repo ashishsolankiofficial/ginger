@@ -21,7 +21,7 @@ export class LoginPageComponent implements OnInit {
     const val = this.loginForm.value;
     if (val.email && val.password) {
       this.authService.login(val.email, val.password).subscribe(
-        (data) => {
+        (response) => {
           this.router.navigateByUrl('/home-page');
         },
         (error) => {
