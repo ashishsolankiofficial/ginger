@@ -16,7 +16,7 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   logout() {
-    console.log('here')
+
     this.authService.logout()
   }
 

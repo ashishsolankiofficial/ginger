@@ -56,10 +56,8 @@ export class AuthService {
       })
       .pipe(
         map((response) => {
-          // login successful if there's a jwt token in the response
           let currentUser = new User;
           if (response.access) {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
             currentUser = jwt_decode(response.access);
             currentUser.token = response.access;
             currentUser.refreshToken = this.currentUserValue.refreshToken;
@@ -70,6 +68,5 @@ export class AuthService {
         }
         )
       );
-    // .subscribe( data => console.log('data'), error => console.warn(error))
   }
 }
