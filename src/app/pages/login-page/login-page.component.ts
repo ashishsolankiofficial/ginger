@@ -10,28 +10,11 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
-  error: string;
+  coversrc: string = "../../../assets/images/landingimg.png"
+  logosrc: string = "../../../assets/images/mainlogo.png"
 
-  loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-  });
 
-  login() {
-    const val = this.loginForm.value;
-    if (val.email && val.password) {
-      this.authService.login(val.email, val.password).subscribe(
-        (response) => {
-          this.router.navigateByUrl('/home-page');
-        },
-        (error) => {
-          this.error = error;
-        }
-      );
-    }
-  }
+  constructor() { }
 
-  constructor(private authService: AuthService, private router: Router) {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
