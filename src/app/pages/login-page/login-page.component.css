@@ -1,0 +1,22 @@
+.vertical-center {
+  min-height: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.cover-container {
+  overflow: hidden;
+}
+
+.cover-image {
+  width: 100%;
+  height: 580px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.logo-image {
+  height: 200px;
+  width: auto;
+}
