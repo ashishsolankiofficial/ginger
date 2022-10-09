@@ -12,13 +12,9 @@ export class HomePageComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private restaurantService: RestaurantService,
-    private authService: AuthService,
   ) { }
 
-  logout() {
 
-    this.authService.logout()
-  }
 
   ngOnInit(): void {
     this.restaurantService.list().subscribe();

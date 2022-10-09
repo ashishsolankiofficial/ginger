@@ -1,0 +1,13 @@
+.header-image {
+    width: auto;
+    height: 50px;
+}
+
+.logo-name {
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn {
+    /* padding: 0; */
+}
