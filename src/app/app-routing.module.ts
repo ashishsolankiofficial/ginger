@@ -9,6 +9,7 @@ import { RestaurantPageComponent } from './pages/restaurant-page/restaurant-page
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { RestaurantlistPageComponent } from './pages/restaurantlist-page/restaurantlist-page.component';
 import { ProductlistPageComponent } from './pages/productlist-page/productlist-page.component';
+import { RestaurantFormComponent } from './pages/restaurant-form/restaurant-form.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,25 @@ const routes: Routes = [
       {
         path: 'products',
         component: ProductlistPageComponent,
-      }]
+      },
+      {
+        path: 'restaurant',
+        children: [
+          {
+            path: 'add',
+            component: RestaurantFormComponent,
+          },
+          {
+            path: 'edit/:ext_id',
+            component: RestaurantFormComponent,
+          },
+          {
+            path: ':ext_id',
+            component: RestaurantPageComponent,
+          }
+        ]
+      },
+    ]
   },
   { path: '**', redirectTo: 'home-page' },
 ];

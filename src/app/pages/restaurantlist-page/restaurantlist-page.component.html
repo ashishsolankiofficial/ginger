@@ -1,1 +1,42 @@
-<p>restaurantlist-page works!</p>
+<div class="container card shadow control-container">
+    <div class="row control-row">
+        <div class="col-md-4">
+            <input type=" text" class="form-control" placeholder="Search Name">
+        </div>
+        <div class="col-md-4">
+            <select class="form-select" placeholder="Select City">
+                <option value="" disabled selected>Select City</option>
+                <option value="">None</option>
+                <option value="hurr">Durr</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <a href="home-page/restaurant/add"><button class="btn btn-success float-end">Add Restaurant</button></a>
+        </div>
+    </div>
+</div>
+<div class="container card shadow">
+    <table class="table table-borderless restaurantlist-table">
+        <thead>
+            <tr class="table-head-row">
+                <th>Photo</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Address</th>
+                <th>Cuisines</th>
+                <th>Order</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rest of restaurantData" class="restaurant-row">
+                <td class="restaurant-thumbnail-container"><img class="restaurant-thumbnail" src={{rest.image_url}}>
+                </td>
+                <td><a [routerLink]="['../restaurant',rest.ext_id]" class="restaurant-name-label">{{rest.name}}</a></td>
+                <td>{{rest.city}}</td>
+                <td>{{rest.address}}</td>
+                <td>{{rest.cuisines}}</td>
+                <td>Attach Order</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

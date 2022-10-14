@@ -1,0 +1,57 @@
+.control-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.control-row {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.control-row input::placeholder {
+    color: #444;
+}
+
+.restaurantlist-table {
+    vertical-align: middle;
+    margin: 10px;
+}
+
+.table-head-row {
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+
+tbody:before {
+    line-height: 2em;
+    content: ".";
+    color: white;
+    display: block;
+}
+
+.restaurant-row {
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 14px;
+}
+
+.restaurant-row td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.restaurant-name-label {
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+}
+
+.restaurant-thumbnail-container {
+    overflow: hidden;
+}
+
+.restaurant-thumbnail {
+    height: 100px;
+    width: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+}
