@@ -1,1 +1,84 @@
-<p>productlist-page works!</p>
+<div class="row product-page-background">
+    <div class="col-md-3 side-bar">
+        <div class="wrapper">
+            <header>
+                <h2>Price Range</h2>
+                <p>Use slider or enter min and max price</p>
+            </header>
+            <div class="price-input">
+                <div class="field">
+                    <span>Min</span>
+                    <input type="number" class="input-min" value="2500">
+                </div>
+                <div class="separator">-</div>
+                <div class="field">
+                    <span>Max</span>
+                    <input type="number" class="input-max" value="7500">
+                </div>
+            </div>
+            <div class="slider">
+                <div class="progress"></div>
+            </div>
+            <div class="range-input">
+                <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
+                <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
+            </div>
+        </div>
+        <div class="wrapper">
+            <header>
+                <h2>Brand</h2>
+                <p>Choose your favourite brands</p>
+            </header>
+        </div>
+        <div class="wrapper">
+            <header>
+                <h2>Categories</h2>
+                <p>Choose categories to filter</p>
+            </header>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="row header-bar">
+            <div class="page-container">
+                Per Page
+                <select class="dropdown-select">
+                    <option>9</option>
+                </select>
+            </div>
+            <div class="sort-container">
+                Sort
+                <select class="dropdown-select">
+                    <option>Price</option>
+                    <option>Relevance</option>
+                </select>
+            </div>
+        </div>
+        <div class="row products-container">
+            <div *ngFor="let prod of productData" class="product-box">
+                <div class="row image-container">
+                    <img [src]="imgLoaded ? prod.image_url : imageLoading" class="product-image">
+                </div>
+                <div class="row product-detail-container">
+                    <div class="col-md-9">
+                        <div class="product-brand">{{prod.brands}}</div>
+                        <div class="product-name">{{prod.product_name}}</div>
+                    </div>
+                    <div class="col-md-3 price-container">
+                        <div class="product-price-text">Price</div>
+                        <div class="product-price">$10</div>
+                    </div>
+                </div>
+                <div class="row add-cart-row">
+                    <div class="quantity-container">
+                        <label class="quantity-text">Quantity</label>
+                        <input class="quantity-input" type="number">
+                    </div>
+                    <div class="button-container">
+                        <button class="btn btn-success">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -9,14 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent implements OnInit {
-  constructor(
-    private http: HttpClient,
-    private restaurantService: RestaurantService,
-  ) { }
+  constructor() { }
 
 
 
   ngOnInit(): void {
-    this.restaurantService.list().subscribe();
+
   }
 }

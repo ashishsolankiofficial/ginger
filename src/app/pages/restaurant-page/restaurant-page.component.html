@@ -1,1 +1,91 @@
-<p>restaurant-page works!</p>
+<div class="container card shadow mt-5">
+    <div class="row mt-2">
+        <div class="col-md-6 image-container">
+            <img class="display-image" [src]="restaurant.image_url">
+        </div>
+        <div class="col-md-6 name-container">
+            <div class="display-name">
+                {{restaurant.name}}
+            </div>
+        </div>
+    </div>
+    <div>
+        <table class="table border">
+            <tbody>
+                <tr>
+                    <td class="td-label">
+                        Restaurant Name
+                    </td>
+                    <td>
+                        {{restaurant.name}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-label">
+                        Id
+                    </td>
+                    <td>
+                        {{restaurant.ext_id}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-label">
+                        Zomato Id
+                    </td>
+                    <td>
+                        {{restaurant.zomato_id}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-label">
+                        City
+                    </td>
+                    <td>
+                        {{restaurant.city}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-label">
+                        Address
+                    </td>
+                    <td>
+                        {{restaurant.address}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-label">
+                        City
+                    </td>
+                    <td>
+                        {{restaurant.city}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-label">
+                        Online Delivery
+                    </td>
+                    <td>
+                        {{restaurant.do_online_delivery ? 'Yes' : 'No'}}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-label">
+                        Cuisines
+                    </td>
+                    <td>
+                        {{restaurant.cuisines}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row map-label ml-4">
+        Location
+    </div>
+    <div class="row mb-3">
+        <google-map height="350px" width="100%" [options]="mapOptions">
+            <map-marker [position]="marker.position"></map-marker>
+        </google-map>
+    </div>
+
+</div>

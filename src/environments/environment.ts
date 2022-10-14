@@ -8,6 +8,8 @@ export const environment = {
   loginUrl: '/auth/login/',
   refreshUrl: '/auth/token-refresh/',
   restaurantUrl: '/restaurant/',
+  productUrl: '/product/',
+  productImageUrl: '/product/product-images/',
 };
 
 /*

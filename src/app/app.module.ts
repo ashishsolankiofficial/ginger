@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,15 +16,20 @@ import { ProductPageComponent } from './pages/product-page/product-page.componen
 import { RestaurantlistPageComponent } from './pages/restaurantlist-page/restaurantlist-page.component';
 import { ProductlistPageComponent } from './pages/productlist-page/productlist-page.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { RestaurantFormComponent } from './pages/restaurant-form/restaurant-form.component';
+
 
 
 @NgModule({
-  declarations: [AppComponent, LoginPageComponent, HomePageComponent, RegisterFormComponent, LoginFormComponent, HeaderComponent, RestaurantPageComponent, ProductPageComponent, RestaurantlistPageComponent, ProductlistPageComponent, FooterComponent],
+  declarations: [AppComponent, LoginPageComponent, HomePageComponent, RegisterFormComponent, LoginFormComponent, HeaderComponent, RestaurantPageComponent, ProductPageComponent, RestaurantlistPageComponent, ProductlistPageComponent, FooterComponent, RestaurantFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    GoogleMapsModule,
+    FormsModule,
   ],
   providers: [
     {
