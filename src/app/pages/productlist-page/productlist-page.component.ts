@@ -24,7 +24,6 @@ export class ProductlistPageComponent implements OnInit {
           prod['image_url'] = imgArr.response.find((o: any) => o.id === prod['id']).image;
           return prod
         })
-        console.log(this.productData)
       }
       )
     })
