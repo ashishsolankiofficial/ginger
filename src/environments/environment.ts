@@ -7,6 +7,7 @@ export const environment = {
   apiUrl: 'http://localhost:8000',
   loginUrl: '/auth/login/',
   refreshUrl: '/auth/token-refresh/',
+  cityUrl: '/util/city',
   restaurantUrl: '/restaurant/',
   productUrl: '/product/',
   productImageUrl: '/product/product-images/',
