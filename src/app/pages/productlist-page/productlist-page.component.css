@@ -56,9 +56,22 @@
     object-fit: contain;
 }
 
+.product-image-placeholder {
+    height: 240px;
+    align-items: center;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.loader {
+    flex-wrap: nowrap;
+    align-items: center;
+
+}
+
 .product-detail-container {
     margin-bottom: 20px;
-    padding: 0px 5px;
+    padding: 5px 5px;
 }
 
 .product-brand {
@@ -88,13 +101,17 @@
 
 .add-cart-row {
     flex-direction: row;
+    justify-content: space-between;
     margin-bottom: 10px;
     position: absolute;
     bottom: 0;
+    padding: 0;
+    width: 270px;
 }
 
 .quantity-container {
-    width: 140px;
+    width: 110px;
+    padding: 0;
 }
 
 .quantity-text {
@@ -107,7 +124,7 @@
 }
 
 .button-container {
-    width: 140px;
+    width: 120px;
 }
 
 .button-container button {

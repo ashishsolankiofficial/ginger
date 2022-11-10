@@ -56,29 +56,36 @@
         <div class="row products-container">
             <div *ngFor="let prod of productData" class="product-box">
                 <div class="row image-container">
-                    <img [src]="imgLoaded ? prod.image_url : imageLoading" class="product-image">
-                </div>
-                <div class="row product-detail-container">
-                    <div class="col-md-9">
-                        <div class="product-brand">{{prod.brands}}</div>
-                        <div class="product-name">{{prod.product_name}}</div>
+                    <div class="row product-image-placeholder">
+                        <div *ngIf="!imgLoaded" class="row loader">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <div>Loading Image...</div>
+                        </div>
+                        <img *ngIf="imgLoaded" [src]="prod.image_url" class="product-image">
                     </div>
-                    <div class="col-md-3 price-container">
-                        <div class="product-price-text">Price</div>
-                        <div class="product-price">$10</div>
+                    <div class="row product-detail-container">
+                        <div class="col-md-9">
+                            <div class="product-brand">{{prod.brands}}</div>
+                            <div class="product-name">{{prod.product_name}}</div>
+                        </div>
+                        <div class="col-md-3 price-container">
+                            <div class="product-price-text">Price</div>
+                            <div class="product-price">$10</div>
+                        </div>
                     </div>
-                </div>
-                <div class="row add-cart-row">
-                    <div class="quantity-container">
-                        <label class="quantity-text">Quantity</label>
-                        <input class="quantity-input" type="number">
-                    </div>
-                    <div class="button-container">
-                        <button class="btn btn-success">Add to Cart</button>
+                    <div class="row add-cart-row">
+                        <div class="quantity-container">
+                            <label class="quantity-text">Quantity</label>
+                            <input class="quantity-input" type="number">
+                        </div>
+                        <div class="button-container">
+                            <button class="btn btn-success">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>
