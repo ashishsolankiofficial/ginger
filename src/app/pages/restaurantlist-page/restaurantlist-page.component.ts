@@ -18,9 +18,13 @@ export class RestaurantlistPageComponent implements OnInit {
   cities: any
   selectedCity: any = null;
   searchName: string;
+  currentPage: number;
+  maxPage: number;
+  multiplier: number;
+  pageLinks: any
 
   setCityParams() {
-    const queryParams: Params = { city: this.selectedCity != null ? this.selectedCity.ext_id : undefined };
+    const queryParams: Params = { city: this.selectedCity != null ? this.selectedCity.ext_id : undefined, page: 1 };
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams: queryParams,
@@ -28,7 +32,7 @@ export class RestaurantlistPageComponent implements OnInit {
     });
   }
   setNameParams() {
-    const queryParams: Params = { search: this.searchName != '' ? this.searchName : undefined };
+    const queryParams: Params = { search: this.searchName != '' ? this.searchName : undefined, page: 1 };
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams: queryParams,
@@ -36,20 +40,28 @@ export class RestaurantlistPageComponent implements OnInit {
     });
   }
 
-
+  updatePagination(count: number) {
+    this.maxPage = Math.floor(count / 21) + 1
+    this.multiplier = Math.floor((this.currentPage - 1) / 5)
+  }
 
   ngOnInit(): void {
-    this.restaurantService.list().subscribe(respose => {
-      this.restaurantData = respose.map(
-        (re: any) => {
-          re.cuisines = re.cuisines.map((cu: any) => cu.name).join(', ')
-          return re
-        })
-    });
     this.activatedRoute.queryParams.pipe(debounceTime(500), distinctUntilChanged()).subscribe(params => {
+      this.currentPage = params['page'] ? Number(params['page']) : 1
+      if (!(this.activatedRoute.snapshot.queryParams['city'] || this.activatedRoute.snapshot.queryParams['search'])) {
+        this.restaurantService.list().subscribe(response => {
+          this.updatePagination(response.count)
+          this.restaurantData = response.results.map(
+            (re: any) => {
+              re.cuisines = re.cuisines.map((cu: any) => cu.name).join(', ')
+              return re
+            })
+        });
+      }
       if (Object.keys(params).length !== 0 && params.constructor === Object) {
-        this.restaurantService.list(params).subscribe(respose => {
-          this.restaurantData = respose.map(
+        this.restaurantService.list(params).subscribe(response => {
+          this.updatePagination(response.count)
+          this.restaurantData = response.results.map(
             (re: any) => {
               re.cuisines = re.cuisines.map((cu: any) => cu.name).join(', ')
               return re
@@ -69,7 +81,6 @@ export class RestaurantlistPageComponent implements OnInit {
           this.selectedCity = this.cities.find((o: any) => o.ext_id == params['city'])
         }
       })
-
     })
   }
 }
