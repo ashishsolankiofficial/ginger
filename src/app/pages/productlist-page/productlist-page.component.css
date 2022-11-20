@@ -3,6 +3,16 @@
     margin: 0px;
 }
 
+.search-box {
+    padding: 0px 40px;
+}
+
+.search-box input {
+    border: 1px solid #999;
+    border-radius: 5px;
+    height: 30px;
+}
+
 .header-bar {
     flex-wrap: wrap;
     justify-content: space-between;
@@ -119,8 +129,8 @@
 }
 
 .quantity-input {
-    width: 30px;
     margin-left: 5px;
+    height: 30px;
 }
 
 .button-container {
@@ -200,8 +210,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .slider .progress {
     height: 100%;
-    left: 25%;
-    right: 25%;
     position: absolute;
     border-radius: 5px;
     background: #17A2B8;
@@ -241,4 +249,22 @@ input[type="range"]::-moz-range-thumb {
     pointer-events: auto;
     -moz-appearance: none;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+.pagination {
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #016399;
+    border-radius: 2px;
+    color: white;
 }
