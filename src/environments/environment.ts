@@ -11,6 +11,8 @@ export const environment = {
   restaurantUrl: '/restaurant/',
   productUrl: '/product/',
   productImageUrl: '/product/product-images/',
+  brandUrl: '/product/brands',
+  categoryUrl: '/product/categories',
 };
 
 /*

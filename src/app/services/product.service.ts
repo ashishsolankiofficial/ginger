@@ -10,10 +10,13 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  list() {
+  list(params: any) {
     return this.http
-      .get<any>(environment.apiUrl + environment.productUrl)
+      .get<any>(environment.apiUrl + environment.productUrl, {
+        'params': params
+      })
       .pipe(shareReplay());
+
   }
 
   getImages(idArray: string[]) {
@@ -21,4 +24,16 @@ export class ProductService {
       ids: idArray
     }).pipe(shareReplay())
   }
+
+  getBrands() {
+    return this.http
+      .get<any>(environment.apiUrl + environment.brandUrl)
+      .pipe(shareReplay());
+  }
+  getCategories() {
+    return this.http
+      .get<any>(environment.apiUrl + environment.categoryUrl)
+      .pipe(shareReplay());
+  }
 }
+

@@ -8,36 +8,48 @@
             <div class="price-input">
                 <div class="field">
                     <span>Min</span>
-                    <input type="number" class="input-min" value="2500">
+                    <input type="number" class="input-min" [(ngModel)]="minText" disabled>
                 </div>
                 <div class="separator">-</div>
                 <div class="field">
                     <span>Max</span>
-                    <input type="number" class="input-max" value="7500">
+                    <input type="number" class="input-max" [(ngModel)]="maxText" disabled>
                 </div>
             </div>
-            <div class="slider">
-                <div class="progress"></div>
+            <div class=" slider">
+                <div class="progress" [style.left]="minPercent" [style.right]="maxPercent"></div>
             </div>
             <div class="range-input">
-                <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
-                <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
+                <input type="range" class="range-min" min="0" max="200" step="1" value="0"
+                    (input)="sliderChanged($event.target)">
+                <input type="range" class="range-max" min="0" max="200" step="1" value="200"
+                    (input)="sliderChanged($event.target)">
             </div>
         </div>
         <div class="wrapper">
             <header>
                 <h2>Brand</h2>
                 <p>Choose your favourite brands</p>
+                <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="brands" [(ngModel)]="selectedBrands"
+                    (onSelect)="onBrandSelect($event)" (onDeSelect)="onBrandSelect($event)">
+                </ng-multiselect-dropdown>
             </header>
         </div>
         <div class="wrapper">
             <header>
                 <h2>Categories</h2>
                 <p>Choose categories to filter</p>
+                <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="categories"
+                    [(ngModel)]="selectedCategories" (onSelect)="onCategorySelect($event)"
+                    (onDeSelect)="onCategorySelect($event)">
+                </ng-multiselect-dropdown>
             </header>
         </div>
     </div>
     <div class="col-md-9">
+        <div class="row search-box">
+            <input type="text" placeholder="Search Product" [(ngModel)]="searchText" (keyup)="onSearch()">
+        </div>
         <div class="row header-bar">
             <div class="page-container">
                 Per Page
@@ -67,24 +79,46 @@
                     </div>
                     <div class="row product-detail-container">
                         <div class="col-md-9">
-                            <div class="product-brand">{{prod.brands}}</div>
-                            <div class="product-name">{{prod.product_name}}</div>
+                            <div class="product-brand">{{(prod.brands.length>30)? (prod.brands |
+                                slice:0:30)+'...':(prod.brands) }}</div>
+                            <div class="product-name">{{(prod.product_name.length>30)?(prod.product_name |
+                                slice:0:30)+'...':(prod.product_name) }}</div>
                         </div>
                         <div class="col-md-3 price-container">
                             <div class="product-price-text">Price</div>
-                            <div class="product-price">$10</div>
+                            <div class="product-price">&#8377;{{prod.price}}</div>
                         </div>
                     </div>
                     <div class="row add-cart-row">
                         <div class="quantity-container">
                             <label class="quantity-text">Quantity</label>
-                            <input class="quantity-input" type="number">
+                            <select class="quantity-input">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
                         </div>
                         <div class="button-container">
                             <button class="btn btn-success">Add to Cart</button>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="pagination">
+                <a queryParamsHandling="merge" *ngIf="currentPage > 1" [routerLink]="[]"
+                    [queryParams]="{page: currentPage - 1}">&laquo;</a>
+                <ng-container *ngFor="let item of [].constructor(5); let i = index">
+                    <a [ngClass]="{'active': this.currentPage ==  i + 5*this.multiplier  +1}"
+                        queryParamsHandling="merge" [routerLink]="[]" [queryParams]="{page: i + 5*this.multiplier  + 1}"
+                        *ngIf="i + 5*this.multiplier + 1 <= maxPage">{{i + 5 *this.multiplier
+                        +1}}</a>
+                </ng-container>
+                <a queryParamsHandling="merge" [routerLink]="[]" *ngIf="currentPage < maxPage"
+                    [queryParams]="{page: currentPage + 1}">&raquo;</a>
             </div>
         </div>
 
