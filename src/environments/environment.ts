@@ -9,6 +9,7 @@ export const environment = {
   refreshUrl: '/auth/token-refresh/',
   cityUrl: '/util/city',
   restaurantUrl: '/restaurant/',
+  restaurantSelectUrl: '/restaurant/select',
   productUrl: '/product/',
   productImageUrl: '/product/product-images/',
   brandUrl: '/product/brands',

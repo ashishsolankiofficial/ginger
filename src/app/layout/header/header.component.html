@@ -16,8 +16,14 @@
             <a class="nav-item nav-link" [routerLink]="['/home-page/products']"
                 [routerLinkActive]="['active']">Products</a>
         </div>
+        <div class="navbar-select" *ngIf="isProductPage">
+            <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="restaurantList"
+                [(ngModel)]="selectedRestaurant" placeholder="Select Restaurant" (onSelect)="onRestaurantSelect($event)"
+                (onDeSelect)="onRestaurantDeselect($event)">
+            </ng-multiselect-dropdown>
+        </div>
     </div>
-    <div class="dropdown">
+    <div class=" dropdown">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             <img ng-src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"

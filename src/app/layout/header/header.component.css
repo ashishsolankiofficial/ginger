@@ -8,6 +8,10 @@
     align-items: center;
 }
 
-.btn {
-    /* padding: 0; */
+.navbar-collapse {
+    justify-content: space-between;
+}
+
+.navbar-select {
+    width: 300px;
 }
