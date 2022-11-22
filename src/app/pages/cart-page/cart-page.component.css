@@ -1,0 +1,57 @@
+.table-head-row {
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+
+.cart-restaurant-name {
+    padding: 10px 0px 5px 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.cart-restarant-address {
+    border-bottom: 1px solid black;
+    padding: 0px 0px 10px 20px;
+}
+
+.item-row {
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 14px;
+    text-align: center;
+}
+
+.cart-table {
+    vertical-align: middle;
+    margin: 10px;
+}
+
+.item-name {
+    text-align: left;
+    width: 500px;
+    font-weight: 600;
+}
+
+.total-price {
+    justify-content: center;
+}
+
+.price-number {
+    font-size: 30px;
+    font-weight: 700;
+    width: auto;
+}
+
+.price-text {
+    margin-top: 7px;
+    font-size: 20px;
+    width: auto;
+}
+
+.place-order-row {
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.order-button {
+    width: auto;
+}
