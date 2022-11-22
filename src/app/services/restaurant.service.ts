@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { shareReplay } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
+import { CartService } from './cart.service';
 
 @Injectable({
   providedIn: 'root',
@@ -38,7 +39,7 @@ export class RestaurantService {
   loadRestaurantSelecter(selectedRestaurant?: string) {
     this.selectList().subscribe(resp => {
       let restaurantList = resp.map((rest: { [x: string]: any; }) => {
-        rest['name'] = rest['name'] + '(' + rest['ext_id'] + ')'
+        rest['name'] = rest['name'] + ' (' + rest['ext_id'] + ')'
         return rest
       })
       if (selectedRestaurant) {

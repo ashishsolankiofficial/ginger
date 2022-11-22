@@ -10,6 +10,7 @@ import { ProductPageComponent } from './pages/product-page/product-page.componen
 import { RestaurantlistPageComponent } from './pages/restaurantlist-page/restaurantlist-page.component';
 import { ProductlistPageComponent } from './pages/productlist-page/productlist-page.component';
 import { RestaurantFormComponent } from './pages/restaurant-form/restaurant-form.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,9 @@ const routes: Routes = [
             component: RestaurantPageComponent,
           }
         ]
+      }, {
+        path: 'cart',
+        component: CartPageComponent,
       },
     ]
   },

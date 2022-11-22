@@ -19,11 +19,12 @@ import { ProductlistPageComponent } from './pages/productlist-page/productlist-p
 import { FooterComponent } from './layout/footer/footer.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { RestaurantFormComponent } from './pages/restaurant-form/restaurant-form.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, LoginPageComponent, HomePageComponent, RegisterFormComponent, LoginFormComponent, HeaderComponent, RestaurantPageComponent, ProductPageComponent, RestaurantlistPageComponent, ProductlistPageComponent, FooterComponent, RestaurantFormComponent],
+  declarations: [AppComponent, LoginPageComponent, HomePageComponent, RegisterFormComponent, LoginFormComponent, HeaderComponent, RestaurantPageComponent, ProductPageComponent, RestaurantlistPageComponent, ProductlistPageComponent, FooterComponent, RestaurantFormComponent, CartPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

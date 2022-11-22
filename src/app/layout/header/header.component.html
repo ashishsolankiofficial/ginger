@@ -16,11 +16,16 @@
             <a class="nav-item nav-link" [routerLink]="['/home-page/products']"
                 [routerLinkActive]="['active']">Products</a>
         </div>
-        <div class="navbar-select" *ngIf="isProductPage">
-            <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="restaurantList"
-                [(ngModel)]="selectedRestaurant" placeholder="Select Restaurant" (onSelect)="onRestaurantSelect($event)"
-                (onDeSelect)="onRestaurantDeselect($event)">
-            </ng-multiselect-dropdown>
+        <div class="navbar-right">
+            <div class="navbar-select" *ngIf="isProductPage">
+                <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="restaurantList"
+                    [(ngModel)]="selectedRestaurant" placeholder="Select Restaurant"
+                    (onSelect)="onRestaurantSelect($event)" (onDeSelect)="onRestaurantDeselect($event)">
+                </ng-multiselect-dropdown>
+            </div>
+            <div class="navbar-cart">
+                <a [routerLink]="['/home-page/cart']"><img class="cart-img" [src]="cartImg"></a>
+            </div>
         </div>
     </div>
     <div class=" dropdown">
