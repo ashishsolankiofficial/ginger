@@ -20,11 +20,12 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { RestaurantFormComponent } from './pages/restaurant-form/restaurant-form.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
+import { TotalPricePipe } from './pipes/total-price.pipe';
 
 
 
 @NgModule({
-  declarations: [AppComponent, LoginPageComponent, HomePageComponent, RegisterFormComponent, LoginFormComponent, HeaderComponent, RestaurantPageComponent, ProductPageComponent, RestaurantlistPageComponent, ProductlistPageComponent, FooterComponent, RestaurantFormComponent, CartPageComponent],
+  declarations: [AppComponent, LoginPageComponent, HomePageComponent, RegisterFormComponent, LoginFormComponent, HeaderComponent, RestaurantPageComponent, ProductPageComponent, RestaurantlistPageComponent, ProductlistPageComponent, FooterComponent, RestaurantFormComponent, CartPageComponent, TotalPricePipe],
   imports: [
     BrowserModule,
     AppRoutingModule,

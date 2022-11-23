@@ -17,7 +17,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let item of rest.cart" class="item-row">
-                                <td class="item-name">{{item.name}}</td>
+                                <td class="item-name">{{item.product_name}}</td>
                                 <td>{{item.price}}</td>
                                 <td><select class="quantity-input" [(ngModel)]="item.quantity"
                                         (change)="onQuantityChange(rest.restaurant.ext_id, item.id, $event.target)">
@@ -28,8 +28,10 @@
                                         <option value="5">5</option>
                                     </select></td>
                                 <td>{{item.price * item.quantity}}</td>
-                                <td><button (click)="onItemDelete(rest.restaurant.ext_id, item.id)"
-                                        class="btn btn-outline-danger">Delete</button></td>
+                                <td>
+                                    <button (click)="onItemDelete(rest.restaurant.ext_id, item.id)"
+                                        class="btn btn-outline-danger">Delete</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -39,7 +41,7 @@
                 <div class="row">
                     <div class="row total-price">
                         <span class="price-text">Total Price :</span>
-                        <span class="price-number"> &#8377;{{rest.restaurant.cart}}</span>
+                        <span class="price-number"> &#8377;{{rest.cart | totalPrice}}</span>
                     </div>
                 </div>
                 <div class="row place-order-row">
