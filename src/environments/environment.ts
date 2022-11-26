@@ -12,8 +12,9 @@ export const environment = {
   restaurantSelectUrl: '/restaurant/select',
   productUrl: '/product/',
   productImageUrl: '/product/product-images/',
-  brandUrl: '/product/brands',
-  categoryUrl: '/product/categories',
+  brandUrl: '/product/brands/',
+  categoryUrl: '/product/categories/',
+  orderUrl: '/order/'
 };
 
 /*

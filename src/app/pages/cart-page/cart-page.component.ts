@@ -2,6 +2,7 @@ import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
+import { OrderService } from 'src/app/services/order.service';
 import { ProductService } from 'src/app/services/product.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 
@@ -20,7 +21,8 @@ export class CartPageComponent implements OnInit {
   prodReq: any = []
   prodLookup: any;
   iterCart: any = []
-  constructor(private restaurantService: RestaurantService, private productService: ProductService, private cartService: CartService) { }
+  error: any;
+  constructor(private restaurantService: RestaurantService, private productService: ProductService, private cartService: CartService, private orderService: OrderService) { }
 
   itemList = [{ name: 'one', quantity: 1, totalPrice: 1 }, { name: 'two', quantity: 2, totalPrice: 2 }]
 
@@ -34,6 +36,11 @@ export class CartPageComponent implements OnInit {
 
   onItemDelete(ext_id: string, id: string) {
     this.cartService.deleteItem(ext_id, id)
+    this.loadCart()
+  }
+
+  onOrderDelete(ext_id: string) {
+    this.cartService.deleteOrder(ext_id)
     this.loadCart()
   }
 
@@ -68,6 +75,14 @@ export class CartPageComponent implements OnInit {
           if (x < y) { return -1; } else { return 1; }
         })
       })
+    })
+  }
+
+  placeOrder(details: any) {
+    this.orderService.placeOrder(details["restaurant"].ext_id, details["cart"]).subscribe(resp => {
+      this.onOrderDelete(details["restaurant"].ext_id)
+    }, error => {
+      console.error(error)
     })
   }
 }

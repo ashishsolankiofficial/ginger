@@ -11,6 +11,8 @@ import { RestaurantlistPageComponent } from './pages/restaurantlist-page/restaur
 import { ProductlistPageComponent } from './pages/productlist-page/productlist-page.component';
 import { RestaurantFormComponent } from './pages/restaurant-form/restaurant-form.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
+import { OrderPageComponent } from './pages/order-page/order-page.component';
+import { OrderlistPageComponent } from './pages/orderlist-page/orderlist-page.component';
 
 const routes: Routes = [
   {
@@ -55,6 +57,20 @@ const routes: Routes = [
       }, {
         path: 'cart',
         component: CartPageComponent,
+      },
+      {
+        path: 'order',
+        children: [
+          {
+            path: '',
+            component: OrderlistPageComponent,
+          },
+          {
+            path: ':ext_id',
+            component: OrderPageComponent,
+          }
+        ]
+
       },
     ]
   },

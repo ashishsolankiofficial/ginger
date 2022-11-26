@@ -35,7 +35,8 @@
                 width="40" height="40" class="rounded-circle">
         </button>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button">Profile Settings</button>
+            <button class="dropdown-item" type="button"><a class="order-button"
+                    [routerLink]="['/home-page/order']">Orders</a></button>
             <button class="dropdown-item" type="button" (click)="logout()">Logout</button>
         </div>
     </div>

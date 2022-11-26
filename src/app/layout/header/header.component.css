@@ -29,3 +29,8 @@
 .cart-img {
     height: 40px;
 }
+
+.order-button {
+    text-decoration: none;
+    color: rgb(18, 17, 17);
+}

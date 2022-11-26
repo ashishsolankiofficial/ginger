@@ -36,4 +36,11 @@ export class CartService {
     }
     localStorage.setItem("cart", JSON.stringify(cart))
   }
+
+  deleteOrder(restaurant: string) {
+    let cart: any = JSON.parse(localStorage.getItem("cart") || "{}")
+    delete cart[restaurant]
+    localStorage.setItem("cart", JSON.stringify(cart))
+  }
+
 }
