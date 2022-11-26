@@ -19,11 +19,17 @@ import { ProductlistPageComponent } from './pages/productlist-page/productlist-p
 import { FooterComponent } from './layout/footer/footer.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { RestaurantFormComponent } from './pages/restaurant-form/restaurant-form.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
+import { TotalPricePipe } from './pipes/total-price.pipe';
+import { OrderPageComponent } from './pages/order-page/order-page.component';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { OrderlistPageComponent } from './pages/orderlist-page/orderlist-page.component';
+
 
 
 
 @NgModule({
-  declarations: [AppComponent, LoginPageComponent, HomePageComponent, RegisterFormComponent, LoginFormComponent, HeaderComponent, RestaurantPageComponent, ProductPageComponent, RestaurantlistPageComponent, ProductlistPageComponent, FooterComponent, RestaurantFormComponent],
+  declarations: [AppComponent, LoginPageComponent, HomePageComponent, RegisterFormComponent, LoginFormComponent, HeaderComponent, RestaurantPageComponent, ProductPageComponent, RestaurantlistPageComponent, ProductlistPageComponent, FooterComponent, RestaurantFormComponent, CartPageComponent, TotalPricePipe, OrderPageComponent, OrderlistPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,6 +38,7 @@ import { RestaurantFormComponent } from './pages/restaurant-form/restaurant-form
     GoogleMapsModule,
     FormsModule,
     NgMultiSelectDropDownModule,
+    NgxDaterangepickerMd.forRoot(),
   ],
   providers: [
     {

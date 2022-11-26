@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, debounceTime, distinctUntilChanged, elementAt } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { RestaurantService } from 'src/app/services/restaurant.service';
+import { CartService } from 'src/app/services/cart.service';
 
 
 @Component({
@@ -35,12 +37,14 @@ export class ProductlistPageComponent implements OnInit {
   currentPage: number;
   multiplier: number;
   maxPage: number;
+  restaurantList: { ext_id: string; name: string; }[];
+  selectedRestaurant: string;
+  urlPage: number;
 
-  constructor(private productService: ProductService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private productService: ProductService, private restaurantService: RestaurantService, private cartService: CartService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   onSearch() {
     this.productFilter.next({ 'page': this.productParams['page'], 'search': this.searchText, 'minPrice': this.productParams['minPrice'], 'maxPrice': this.productParams['maxPrice'], 'brand': this.productParams['brand'], 'category': this.productParams['category'] })
-
   }
 
   sliderChanged(e: any) {
@@ -71,10 +75,21 @@ export class ProductlistPageComponent implements OnInit {
   ngOnInit(): void {
 
     this.activatedRoute.queryParams.subscribe(params => {
-      this.currentPage = params['page'] ? Number(params['page']) : 1
-      this.multiplier = Math.floor((this.currentPage - 1) / 5)
-      this.productFilter.next({ 'page': this.currentPage, 'search': this.productParams['search'], 'minPrice': this.productParams['minPrice'], 'maxPrice': this.productParams['maxPrice'], 'brand': this.productParams['brand'], 'category': this.productParams['category'] })
+      this.urlPage = params['page'] ? Number(params['page']) : 1
+      if (this.urlPage != this.currentPage) {
+        this.currentPage = this.urlPage
+        this.multiplier = Math.floor((this.currentPage - 1) / 5)
+        this.productFilter.next({ 'page': this.currentPage, 'search': "", 'minPrice': 0, 'maxPrice': 200, 'brand': [], 'category': [] })
+      }
+      this.selectedRestaurant = this.activatedRoute.snapshot.queryParams['restaurant']
     })
+
+    if (this.activatedRoute.snapshot.queryParams['restaurant']) {
+      // this.selectedRestaurant = this.activatedRoute.snapshot.queryParams['restaurant']
+      this.restaurantService.loadRestaurantSelecter(this.activatedRoute.snapshot.queryParams['restaurant'])
+    } else {
+      this.restaurantService.loadRestaurantSelecter()
+    }
 
 
     this.dropdownSettings = {
@@ -113,8 +128,13 @@ export class ProductlistPageComponent implements OnInit {
 
     })
 
+  }
+  ngOnDestroy() {
+    this.restaurantService.unloadRestaurantSelecter()
+  }
 
-
+  addItem(id: string, quantity: string) {
+    this.cartService.addItem(this.selectedRestaurant, id, quantity ? parseInt(quantity) : 1)
   }
 
 }

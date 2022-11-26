@@ -36,11 +36,11 @@
                 <td>{{rest.city}}</td>
                 <td>{{rest.address}}</td>
                 <td>{{rest.cuisines}}</td>
-                <td>Attach Order</td>
+                <td><a [routerLink]="['../products']" [queryParams]="{restaurant: rest.ext_id}">Attach Order</a></td>
             </tr>
         </tbody>
     </table>
-    <div class="row">
+    <div class=" row">
         <div class="pagination">
             <a queryParamsHandling="merge" *ngIf="currentPage > 1" [routerLink]="[]"
                 [queryParams]="{page: currentPage - 1}">&laquo;</a>

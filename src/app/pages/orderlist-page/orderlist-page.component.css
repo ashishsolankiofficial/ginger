@@ -1,0 +1,26 @@
+.control-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.control-row {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.table-head-row {
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+
+tbody:before {
+    line-height: 2em;
+    content: ".";
+    color: white;
+    display: block;
+}
+
+.order-row {
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 14px;
+}

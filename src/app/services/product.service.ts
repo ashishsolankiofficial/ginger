@@ -19,6 +19,12 @@ export class ProductService {
 
   }
 
+  getDetails(id: string) {
+    return this.http.get<any>(environment.apiUrl + environment.productUrl + id)
+      .pipe(shareReplay());
+
+  }
+
   getImages(idArray: string[]) {
     return this.http.post<any>(environment.apiUrl + environment.productImageUrl, {
       ids: idArray

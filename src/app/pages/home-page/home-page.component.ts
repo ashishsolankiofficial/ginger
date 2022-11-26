@@ -11,8 +11,6 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HomePageComponent implements OnInit {
   constructor() { }
 
-
-
   ngOnInit(): void {
 
   }

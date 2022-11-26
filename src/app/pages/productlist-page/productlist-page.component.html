@@ -92,7 +92,8 @@
                     <div class="row add-cart-row">
                         <div class="quantity-container">
                             <label class="quantity-text">Quantity</label>
-                            <select class="quantity-input">
+                            <select class="quantity-input" [(ngModel)]="prod.value">
+                                <option class="dropdown-item" disabled selected hidden value="undefined">1</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -101,7 +102,7 @@
                             </select>
                         </div>
                         <div class="button-container">
-                            <button class="btn btn-success">Add to Cart</button>
+                            <button class="btn btn-success" (click)="addItem(prod.id, prod.value)">Add to Cart</button>
                         </div>
                     </div>
                 </div>
