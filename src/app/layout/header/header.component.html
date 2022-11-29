@@ -13,8 +13,7 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" [routerLink]="['/home-page/restaurants']"
                 [routerLinkActive]="['active']">Restaurants</a>
-            <a class="nav-item nav-link" [routerLink]="['/home-page/products']"
-                [routerLinkActive]="['active']">Products</a>
+            <a class="nav-item nav-link" [routerLink]="['/home-page/order']" [routerLinkActive]="['active']">Orders</a>
         </div>
         <div class="navbar-right">
             <div class="navbar-select" *ngIf="isProductPage">
@@ -24,19 +23,20 @@
                 </ng-multiselect-dropdown>
             </div>
             <div class="navbar-cart">
-                <a [routerLink]="['/home-page/cart']"><img class="cart-img" [src]="cartImg"></a>
+                <a class="cart-text" [routerLink]="['/home-page/cart']">
+                    <img class="cart-img" [src]="cartImg">
+                    <div>Cart</div>
+                </a>
             </div>
         </div>
     </div>
     <div class=" dropdown">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <img ng-src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
-                width="40" height="40" class="rounded-circle">
+            <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40"
+                height="40" class="rounded-circle">
         </button>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button"><a class="order-button"
-                    [routerLink]="['/home-page/order']">Orders</a></button>
             <button class="dropdown-item" type="button" (click)="logout()">Logout</button>
         </div>
     </div>

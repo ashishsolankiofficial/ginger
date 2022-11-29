@@ -85,12 +85,10 @@ export class ProductlistPageComponent implements OnInit {
     })
 
     if (this.activatedRoute.snapshot.queryParams['restaurant']) {
-      // this.selectedRestaurant = this.activatedRoute.snapshot.queryParams['restaurant']
       this.restaurantService.loadRestaurantSelecter(this.activatedRoute.snapshot.queryParams['restaurant'])
     } else {
       this.restaurantService.loadRestaurantSelecter()
     }
-
 
     this.dropdownSettings = {
       singleSelection: false,
@@ -111,6 +109,9 @@ export class ProductlistPageComponent implements OnInit {
     this.rangeInput = document.querySelectorAll(".range-input input")
     this.productFilter.pipe(debounceTime(500), distinctUntilChanged()).subscribe(resp => {
       this.productParams = resp
+      this.restaurantService.restaurantObservable.subscribe(resp => {
+        this.productFilter.next({ 'page': this.productParams['page'], 'search': this.productParams['search'], 'minPrice': this.productParams['minPrice'], 'maxPrice': this.productParams['maxPrice'], 'brand': this.productParams['brand'], 'category': this.productParams['category'] })
+      })
       this.productService.list(this.productParams).subscribe(resp => {
         this.productData = resp.products
         this.maxPage = Math.floor(resp.count / 10) + 1
@@ -134,7 +135,13 @@ export class ProductlistPageComponent implements OnInit {
   }
 
   addItem(id: string, quantity: string) {
-    this.cartService.addItem(this.selectedRestaurant, id, quantity ? parseInt(quantity) : 1)
+    let index = this.productData.findIndex((o: any) => o.id == id)
+    this.productData[index]['clicked'] = true
+    if (this.selectedRestaurant) {
+      this.cartService.addItem(this.selectedRestaurant, id, quantity ? parseInt(quantity) : 1)
+      this.productData[index]['added'] = true
+      this.productData[index]['clicked'] = false
+    }
   }
 
 }

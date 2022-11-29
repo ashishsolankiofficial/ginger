@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { debounce, debounceTime, distinctUntilChanged } from 'rxjs';
+import { debounce, debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 
@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   selectedRestaurant: { ext_id: string; name: string; }[];
   isProductPage: boolean = false;
   restaurantList: any;
+
   constructor(private authService: AuthService, private restaurantService: RestaurantService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -42,6 +43,7 @@ export class HeaderComponent implements OnInit {
 
   onRestaurantSelect(e: any) {
     const queryParams: Params = { restaurant: this.selectedRestaurant[0].ext_id };
+    this.restaurantService.restaurantObservable.next(this.selectedRestaurant[0].ext_id)
     this.router.navigate([],
       {
         relativeTo: this.activatedRoute,
