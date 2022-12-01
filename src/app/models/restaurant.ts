@@ -7,8 +7,8 @@ export class Restaurant {
         public longitude: number,
         public image_url: string,
         public do_online_delivery: boolean,
-        public city: string,
-        public cuisines: string[],
+        public city: { ext_id: string, name: string },
+        public cuisines: [],
 
     ) { }
 }

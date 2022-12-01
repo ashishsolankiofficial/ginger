@@ -41,6 +41,15 @@ export class RestaurantService {
     return this.http.get<any>(environment.apiUrl + environment.cuisineUrl).pipe(shareReplay())
   }
 
+  saveResturant(data: any) {
+    return this.http.post<any>(environment.apiUrl + environment.restaurantUrl, data)
+  }
+
+  saveExistingResturant(ext_id: string, data: any) {
+    console.log(data)
+    return this.http.put<any>(environment.apiUrl + environment.restaurantUrl + ext_id + '/', data)
+  }
+
   loadRestaurantSelecter(selectedRestaurant?: string) {
     this.selectList().subscribe(resp => {
       let restaurantList = resp.map((rest: { [x: string]: any; }) => {

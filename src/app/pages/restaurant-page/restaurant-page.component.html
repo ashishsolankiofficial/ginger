@@ -5,8 +5,13 @@
                 onerror="this.src='https://www.feednavigator.com/var/wrbm_gb_food_pharma/storage/images/_aliases/news_large/9/2/8/5/235829-6-eng-GB/Feed-Test-SIC-Feed-20142.jpg'">
         </div>
         <div class="col-md-6 name-container">
-            <div class="display-name">
-                {{restaurant.name}}
+            <div class="row">
+                <div class="edit-text"><a [routerLink]="['../edit/' + restaurant.ext_id]">Edit Info</a></div>
+            </div>
+            <div class="row">
+                <div class="display-name">
+                    {{restaurant.name}}
+                </div>
             </div>
         </div>
     </div>
@@ -42,7 +47,7 @@
                         City
                     </td>
                     <td>
-                        {{restaurant.city}}
+                        {{restaurant.city.name}}
                     </td>
                 </tr>
                 <tr>
@@ -51,14 +56,6 @@
                     </td>
                     <td>
                         {{restaurant.address}}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-label">
-                        City
-                    </td>
-                    <td>
-                        {{restaurant.city}}
                     </td>
                 </tr>
                 <tr>

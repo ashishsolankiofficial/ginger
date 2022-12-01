@@ -36,7 +36,7 @@
             </tr>
         </tbody>
     </table>
-    <div class=" row">
+    <div class="row" *ngIf="maxPage > 1">
         <div class="pagination">
             <button (click)="pageUpdate(currentPage-1)" *ngIf="currentPage > 1">&laquo;</button>
             <ng-container *ngFor="let item of [].constructor(5); let i = index">

@@ -35,14 +35,14 @@
                             onerror="this.src='https://www.feednavigator.com/var/wrbm_gb_food_pharma/storage/images/_aliases/news_large/9/2/8/5/235829-6-eng-GB/Feed-Test-SIC-Feed-20142.jpg'">
                     </a></td>
                 <td><a [routerLink]="['../restaurant',rest.ext_id]" class="restaurant-name-label">{{rest.name}}</a></td>
-                <td>{{rest.city}}</td>
+                <td>{{rest.city.name}}</td>
                 <td>{{rest.address}}</td>
                 <td>{{rest.cuisines}}</td>
                 <td><a [routerLink]="['../products']" [queryParams]="{restaurant: rest.ext_id}">Attach Order</a></td>
             </tr>
         </tbody>
     </table>
-    <div class=" row">
+    <div class="row" *ngIf="maxPage > 1">
         <div class="pagination">
             <a queryParamsHandling="merge" *ngIf="currentPage > 1" [routerLink]="[]"
                 [queryParams]="{page: currentPage - 1}">&laquo;</a>
