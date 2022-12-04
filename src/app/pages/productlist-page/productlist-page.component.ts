@@ -104,6 +104,7 @@ export class ProductlistPageComponent implements OnInit {
     this.productService.getCategories().subscribe(resp => {
       this.categories = resp['response']
     })
+
     this.minText = this.sliderMin;
     this.maxText = this.sliderMax;
     this.rangeInput = document.querySelectorAll(".range-input input")
@@ -113,18 +114,18 @@ export class ProductlistPageComponent implements OnInit {
         this.productFilter.next({ 'page': this.productParams['page'], 'search': this.productParams['search'], 'minPrice': this.productParams['minPrice'], 'maxPrice': this.productParams['maxPrice'], 'brand': this.productParams['brand'], 'category': this.productParams['category'] })
       })
       this.productService.list(this.productParams).subscribe(resp => {
+        this.imgLoaded = false
         this.productData = resp.products
         this.maxPage = Math.floor(resp.count / 10) + 1
         let idArr = resp.products.map((p: any) => p.id)
-        // this.productService.getImages(idArr).subscribe(imgArr => {
-        //   this.imgLoaded = true;
-        //   this.productData.map((prod: any) => {
-        //     prod['image_url'] = imgArr.response.find((o: any) => o.id === prod['id']).image;
-        //     return prod
-        //   })
-        // }
-        // )
-
+        this.productService.getImages(idArr).subscribe(imgArr => {
+          this.imgLoaded = true;
+          this.productData.map((prod: any) => {
+            prod['image_url'] = imgArr.response.find((o: any) => o.id === prod['id']).image;
+            return prod
+          })
+        }
+        )
       })
 
     })

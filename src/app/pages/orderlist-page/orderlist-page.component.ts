@@ -65,8 +65,8 @@ export class OrderlistPageComponent implements OnInit {
     this.orderParamsObservable.subscribe(params => {
       this.orderService.getList(params).subscribe(resp => {
         this.currentPage = resp['current']
-        this.updatePagination(resp.count)
         this.orderList = resp['results']
+        this.updatePagination(resp.count)
       })
     })
 
