@@ -36,4 +36,15 @@
             </tr>
         </tbody>
     </table>
+    <div class="row" *ngIf="maxPage > 1">
+        <div class="pagination">
+            <button (click)="pageUpdate(currentPage-1)" *ngIf="currentPage > 1">&laquo;</button>
+            <ng-container *ngFor="let item of [].constructor(5); let i = index">
+                <button (click)="pageUpdate(i + 5 * this.multiplier +1)"
+                    [ngClass]="{'active': this.currentPage ==  i + 5 * this.multiplier +1}"
+                    *ngIf="i + 5 * this.multiplier + 1 <= maxPage">{{i + 5 * this.multiplier +1}}</button>
+            </ng-container>
+            <button (click)="pageUpdate(currentPage+1)" *ngIf="currentPage < maxPage">&raquo;</button>
+        </div>
+    </div>
 </div>

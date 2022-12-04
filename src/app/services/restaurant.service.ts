@@ -12,6 +12,7 @@ import { CartService } from './cart.service';
 export class RestaurantService {
 
   importRestaurantList: Subject<any> = new Subject()
+  restaurantObservable: Subject<any> = new Subject()
   constructor(private http: HttpClient) { }
 
   list(params?: any) {
@@ -34,6 +35,19 @@ export class RestaurantService {
     return this.http
       .get<any>(environment.apiUrl + environment.restaurantUrl + ext_id)
       .pipe(shareReplay());
+  }
+
+  getCuisines() {
+    return this.http.get<any>(environment.apiUrl + environment.cuisineUrl).pipe(shareReplay())
+  }
+
+  saveResturant(data: any) {
+    return this.http.post<any>(environment.apiUrl + environment.restaurantUrl, data)
+  }
+
+  saveExistingResturant(ext_id: string, data: any) {
+    console.log(data)
+    return this.http.put<any>(environment.apiUrl + environment.restaurantUrl + ext_id + '/', data)
   }
 
   loadRestaurantSelecter(selectedRestaurant?: string) {

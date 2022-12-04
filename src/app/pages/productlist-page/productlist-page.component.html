@@ -57,13 +57,6 @@
                     <option>9</option>
                 </select>
             </div>
-            <div class="sort-container">
-                Sort
-                <select class="dropdown-select">
-                    <option>Price</option>
-                    <option>Relevance</option>
-                </select>
-            </div>
         </div>
         <div class="row products-container">
             <div *ngFor="let prod of productData" class="product-box">
@@ -102,7 +95,13 @@
                             </select>
                         </div>
                         <div class="button-container">
-                            <button class="btn btn-success" (click)="addItem(prod.id, prod.value)">Add to Cart</button>
+                            <button class="btn btn-success" *ngIf="!prod.added"
+                                (click)="addItem(prod.id, prod.value)">Add to Cart</button>
+                            <button class="btn btn-secondary disabled" *ngIf="prod.added">Added</button>
+                        </div>
+                        <div class="error-text" *ngIf="(prod.clicked && !this.selectedRestaurant)">You
+                            must select a
+                            Restaurant
                         </div>
                     </div>
                 </div>

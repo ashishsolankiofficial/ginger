@@ -1,3 +1,109 @@
-<form>
-
-</form>
+<div *ngIf="!loading" class="container card shadow restaurant-form-container">
+    <div *ngIf="addMode" class="row form-label">Add Restaurant</div>
+    <div *ngIf="!addMode" class="row form-label">Edit Restaurant</div>
+    <div class="row form-body">
+        <form #restaurantFrom="ngForm" (ngSubmit)="restaurantFrom.valid && submit(restaurantFrom.value)">
+            <div class="row form-row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Name*</label>
+                        <input type="text" class="form-control" id="name" name="name" #name="ngModel"
+                            [ngModel]="restaurant.name" required>
+                        <div *ngIf="name.invalid && (name.touched || restaurantFrom.submitted)" class="text-error">Name
+                            is required</div>
+                    </div>
+                </div>
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label for="zomatoId">Zomato Id</label>
+                        <input type="number" class="form-control" id="zomatoId" name="zomato_id" #zomatoID="ngModel"
+                            [ngModel]="restaurant.zomato_id">
+                        <div *ngIf="zomatoID.invalid && (zomatoID.touched|| restaurantFrom.submitted)"
+                            class="text-error">Enter a Valid Zomato ID
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="form-group">
+                    <label for="address">Address*</label>
+                    <input type="text" class="form-control" id="address" name="address" #address="ngModel"
+                        [ngModel]="restaurant.address" required>
+                    <div *ngIf="address.invalid && (address.touched || restaurantFrom.submitted) " class="text-error">
+                        Enter a valid Address</div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="latitude">Latitude*</label>
+                        <input type="number" class="form-control" id="latitude" name="latitude" #latitude="ngModel"
+                            [ngModel]="restaurant.latitude" required>
+                        <div *ngIf="latitude.invalid && (latitude.touched|| restaurantFrom.submitted)"
+                            class="text-error">Enter a valid Latitude
+                            Coordinate</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="longitude">Longitude*</label>
+                        <input type="number" class="form-control" id="longitude" name="longitude" #longitude="ngModel"
+                            [ngModel]="restaurant.longitude" required>
+                        <div *ngIf="longitude.invalid && (longitude.touched|| restaurantFrom.submitted)"
+                            class="text-error">Enter a valid Longitude
+                            Coordinate</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="form-group">
+                    <label for="imageurl">Image Url</label>
+                    <input type="url" class="form-control" id="imageurl" name="image_url" #imageurl="ngModel"
+                        [ngModel]="restaurant.image_url">
+                    <div *ngIf="imageurl.invalid && (imageurl.touched|| restaurantFrom.submitted)" class="text-error">
+                        Enter a valid Image Url</div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="city">City*</label>
+                        <select class="form-control" id="city" name="city" #city="ngModel"
+                            [ngModel]="restaurant.city.ext_id" required>
+                            <option [ngValue]="null" disabled>Select City</option>
+                            <option *ngFor="let city of cities" [ngValue]='city.ext_id'>{{city.name}}</option>
+                        </select>
+                        <div *ngIf="city.invalid && (city.touched|| restaurantFrom.submitted)" class="text-error">Choose
+                            a city</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="onlinedelivery">Do Online Delivery*</label>
+                        <select class="form-control" id="onlinedelivery" name="do_online_delivery"
+                            #onlineDelivery="ngModel" [ngModel]="restaurant.do_online_delivery" required>
+                            <option [ngValue]="true">Yes</option>
+                            <option [ngValue]="false">No</option>
+                        </select>
+                    </div>
+                    <div *ngIf="onlineDelivery.invalid && (onlineDelivery.touched|| restaurantFrom.submitted)"
+                        class="text-error">Choose an option
+                    </div>
+                </div>
+            </div>
+            <div class="row form-row">
+                <div class="form-group">
+                    <label for="cuisines">Cuisines*</label>
+                    <ng-multiselect-dropdown name="cuisines" #cuisine="ngModel" [ngModel]="restaurant.cuisines"
+                        id="cuisines" placeholder="Select Cuisines" [settings]="dropdownSettings" [data]="cuisines"
+                        [(ngModel)]="selectedCuisines" required>
+                    </ng-multiselect-dropdown>
+                </div>
+                <div *ngIf="cuisine.invalid && (cuisine.touched|| restaurantFrom.submitted)" class="text-error">Choose
+                    atleast one option
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+</div>

@@ -13,8 +13,12 @@
 
 .name-container {
     display: flex;
-    align-items: center;
     border-left: 1px solid #bbb;
+    flex-direction: column;
+}
+
+.edit-text {
+    text-align: end;
 }
 
 .display-name {

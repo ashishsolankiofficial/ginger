@@ -8,6 +8,7 @@ export const environment = {
   loginUrl: '/auth/login/',
   refreshUrl: '/auth/token-refresh/',
   cityUrl: '/util/city',
+  cuisineUrl: '/restaurant/cuisine',
   restaurantUrl: '/restaurant/',
   restaurantSelectUrl: '/restaurant/select',
   productUrl: '/product/',

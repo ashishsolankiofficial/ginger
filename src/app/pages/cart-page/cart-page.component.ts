@@ -22,6 +22,7 @@ export class CartPageComponent implements OnInit {
   prodLookup: any;
   iterCart: any = []
   error: any;
+  emptyCart: boolean;
   constructor(private restaurantService: RestaurantService, private productService: ProductService, private cartService: CartService, private orderService: OrderService) { }
 
   itemList = [{ name: 'one', quantity: 1, totalPrice: 1 }, { name: 'two', quantity: 2, totalPrice: 2 }]
@@ -45,11 +46,13 @@ export class CartPageComponent implements OnInit {
   }
 
   loadCart() {
+    this.emptyCart = true
     this.iterCart = []
     this.restLookup = []
     this.storedCart = (JSON.parse(localStorage.getItem("cart") || "{}"))
     this.allCart = Object.entries(this.storedCart)
     this.restFork = forkJoin(this.allCart.map((ele: any) => {
+      this.emptyCart = false
       return this.restaurantService.details(ele[0])
     })).subscribe((resp: any) => {
       resp.forEach((i: any) => {
