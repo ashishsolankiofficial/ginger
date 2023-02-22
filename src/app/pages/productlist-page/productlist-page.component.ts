@@ -14,6 +14,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ProductlistPageComponent implements OnInit {
 
+  loading: boolean = true;
   imgLoaded: boolean = false;
   productData: any;
   searchText: string;
@@ -109,13 +110,16 @@ export class ProductlistPageComponent implements OnInit {
     this.maxText = this.sliderMax;
     this.rangeInput = document.querySelectorAll(".range-input input")
     this.productFilter.pipe(debounceTime(500), distinctUntilChanged()).subscribe(resp => {
+      this.loading = true;
       this.productParams = resp
       this.restaurantService.restaurantObservable.subscribe(resp => {
         this.productFilter.next({ 'page': this.productParams['page'], 'search': this.productParams['search'], 'minPrice': this.productParams['minPrice'], 'maxPrice': this.productParams['maxPrice'], 'brand': this.productParams['brand'], 'category': this.productParams['category'] })
       })
       this.productService.list(this.productParams).subscribe(resp => {
+        this.loading = false;
         this.imgLoaded = false
         this.productData = resp.products
+        console.log(this.productData)
         this.maxPage = Math.floor(resp.count / 10) + 1
         let idArr = resp.products.map((p: any) => p.id)
         this.productService.getImages(idArr).subscribe(imgArr => {

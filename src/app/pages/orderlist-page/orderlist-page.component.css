@@ -20,6 +20,11 @@ tbody:before {
     display: block;
 }
 
+.no-order-text {
+    padding: 40px;
+    text-align: center;
+}
+
 .order-row {
     border-bottom: 1px solid #e5e5e5;
     font-size: 14px;

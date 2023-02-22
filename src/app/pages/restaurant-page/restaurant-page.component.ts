@@ -14,7 +14,7 @@ export class RestaurantPageComponent implements OnInit {
   ext_id: string;
   restaurant: any;
   apiLoaded: Observable<boolean>;
-
+  loading: boolean = true;
 
   mapOptions: google.maps.MapOptions;
   marker = {
@@ -28,6 +28,7 @@ export class RestaurantPageComponent implements OnInit {
   ngOnInit(): void {
     this.ext_id = this.route.snapshot.paramMap.get('ext_id') || '';
     this.restaurantService.details(this.ext_id).subscribe(response => {
+      this.loading = false;
       this.restaurant = response;
       this.restaurant.cuisines = this.restaurant.cuisines.map((cu: any) => cu.name).join(', ')
       this.mapOptions = {
