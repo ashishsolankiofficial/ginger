@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8000',
+  apiUrl: 'http://localhost:8000/api',
   loginUrl: '/auth/login/',
   refreshUrl: '/auth/token-refresh/',
   cityUrl: '/util/city',

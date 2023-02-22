@@ -23,7 +23,7 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  login(email: string, password: string) {
+  login(email: any, password: any) {
     return this.http
       .post<any>(environment.apiUrl + environment.loginUrl, {
         email: email,
