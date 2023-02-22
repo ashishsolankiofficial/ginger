@@ -1,89 +1,91 @@
-<div class="container card shadow mt-5">
+<div *ngIf="!loading">
+  <div class="container card shadow mt-5">
     <div class="row mt-2">
-        <div class="col-md-6 image-container">
-            <img class="display-image" [src]="restaurant.image_url"
-                onerror="this.src='https://www.feednavigator.com/var/wrbm_gb_food_pharma/storage/images/_aliases/news_large/9/2/8/5/235829-6-eng-GB/Feed-Test-SIC-Feed-20142.jpg'">
+      <div class="col-md-6 image-container">
+        <img class="display-image" [src]="restaurant.image_url"
+          onerror="this.src='https://www.feednavigator.com/var/wrbm_gb_food_pharma/storage/images/_aliases/news_large/9/2/8/5/235829-6-eng-GB/Feed-Test-SIC-Feed-20142.jpg'">
+      </div>
+      <div class="col-md-6 name-container">
+        <div class="row">
+          <div class="edit-text"><a [routerLink]="['../edit/' + restaurant.ext_id]">Edit Info</a></div>
         </div>
-        <div class="col-md-6 name-container">
-            <div class="row">
-                <div class="edit-text"><a [routerLink]="['../edit/' + restaurant.ext_id]">Edit Info</a></div>
-            </div>
-            <div class="row">
-                <div class="display-name">
-                    {{restaurant.name}}
-                </div>
-            </div>
+        <div class="row">
+          <div class="display-name">
+            {{restaurant.name}}
+          </div>
         </div>
+      </div>
     </div>
     <div>
-        <table class="table border">
-            <tbody>
-                <tr>
-                    <td class="td-label">
-                        Restaurant Name
-                    </td>
-                    <td>
-                        {{restaurant.name}}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-label">
-                        Id
-                    </td>
-                    <td>
-                        {{restaurant.ext_id}}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-label">
-                        Zomato Id
-                    </td>
-                    <td>
-                        {{restaurant.zomato_id}}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-label">
-                        City
-                    </td>
-                    <td>
-                        {{restaurant.city.name}}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-label">
-                        Address
-                    </td>
-                    <td>
-                        {{restaurant.address}}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-label">
-                        Online Delivery
-                    </td>
-                    <td>
-                        {{restaurant.do_online_delivery ? 'Yes' : 'No'}}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="td-label">
-                        Cuisines
-                    </td>
-                    <td>
-                        {{restaurant.cuisines}}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+      <table class="table border">
+        <tbody>
+          <tr>
+            <td class="td-label">
+              Restaurant Name
+            </td>
+            <td>
+              {{restaurant.name}}
+            </td>
+          </tr>
+          <tr>
+            <td class="td-label">
+              Id
+            </td>
+            <td>
+              {{restaurant.ext_id}}
+            </td>
+          </tr>
+          <tr>
+            <td class="td-label">
+              Zomato Id
+            </td>
+            <td>
+              {{restaurant.zomato_id}}
+            </td>
+          </tr>
+          <tr>
+            <td class="td-label">
+              City
+            </td>
+            <td>
+              {{restaurant.city.name}}
+            </td>
+          </tr>
+          <tr>
+            <td class="td-label">
+              Address
+            </td>
+            <td>
+              {{restaurant.address}}
+            </td>
+          </tr>
+          <tr>
+            <td class="td-label">
+              Online Delivery
+            </td>
+            <td>
+              {{restaurant.do_online_delivery ? 'Yes' : 'No'}}
+            </td>
+          </tr>
+          <tr>
+            <td class="td-label">
+              Cuisines
+            </td>
+            <td>
+              {{restaurant.cuisines}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="row map-label ml-4">
-        Location
+      Location
     </div>
     <div class="row mb-3">
-        <google-map height="350px" width="100%" [options]="mapOptions">
-            <map-marker [position]="marker.position"></map-marker>
-        </google-map>
+      <google-map height="350px" width="100%" [options]="mapOptions">
+        <map-marker [position]="marker.position"></map-marker>
+      </google-map>
     </div>
 
+  </div>
 </div>

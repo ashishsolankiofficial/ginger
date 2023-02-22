@@ -14,6 +14,7 @@ export class RestaurantlistPageComponent implements OnInit {
 
   constructor(private restaurantService: RestaurantService, private utilService: UtilService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
+  loading: boolean = true
   restaurantData: any
   cities: any
   selectedCity: any = null;
@@ -50,6 +51,7 @@ export class RestaurantlistPageComponent implements OnInit {
       this.currentPage = params['page'] ? Number(params['page']) : 1
       if (!(this.activatedRoute.snapshot.queryParams['city'] || this.activatedRoute.snapshot.queryParams['search'])) {
         this.restaurantService.list().subscribe(response => {
+          this.loading = false;
           this.updatePagination(response.count)
           this.restaurantData = response.results.map(
             (re: any) => {
@@ -60,6 +62,7 @@ export class RestaurantlistPageComponent implements OnInit {
       }
       if (Object.keys(params).length !== 0 && params.constructor === Object) {
         this.restaurantService.list(params).subscribe(response => {
+          this.loading = false;
           this.updatePagination(response.count)
           this.restaurantData = response.results.map(
             (re: any) => {

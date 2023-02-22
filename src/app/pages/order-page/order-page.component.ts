@@ -10,12 +10,17 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./order-page.component.css']
 })
 export class OrderPageComponent implements OnInit {
+  loading: boolean = true;
   order: any;
+
 
   constructor(private orderService: OrderService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.orderService.getOrderDetails(this.activatedRoute.snapshot.paramMap.get('ext_id')).subscribe(resp => this.order = resp)
+    this.orderService.getOrderDetails(this.activatedRoute.snapshot.paramMap.get('ext_id')).subscribe(resp => {
+      this.loading = false
+      this.order = resp
+    })
   }
 
 }

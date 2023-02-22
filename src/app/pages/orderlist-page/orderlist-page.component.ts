@@ -12,6 +12,7 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 })
 export class OrderlistPageComponent implements OnInit {
 
+  loading: boolean = true;
   currentPage: number = 1
   maxPage: number;
   multiplier: number;
@@ -64,6 +65,7 @@ export class OrderlistPageComponent implements OnInit {
 
     this.orderParamsObservable.subscribe(params => {
       this.orderService.getList(params).subscribe(resp => {
+        this.loading = false;
         this.currentPage = resp['current']
         this.orderList = resp['results']
         this.updatePagination(resp.count)

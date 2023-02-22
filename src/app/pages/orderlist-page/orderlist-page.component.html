@@ -1,50 +1,55 @@
-<div class="container card shadow control-container">
+<div *ngIf="!loading">
+  <div class="container card shadow control-container">
     <div class="row control-row">
-        <div class="col-md-6">
-            <select class="form-select" [(ngModel)]="selectedRestaurant" (change)="setRestaurantParams()">
-                <option [ngValue]="null" [disabled]="true">Select Restaurant</option>
-                <option [ngValue]="null">None</option>
-                <option *ngFor="let restaurant of restaurantList" [ngValue]='restaurant.ext_id'>{{restaurant.name}} --
-                    {{restaurant.ext_id}}
-                </option>
-            </select>
-        </div>
-        <div class="col-md-6">
-            <input type="text" ngxDaterangepickerMd (datesUpdated)="datesUpdated($event)" startKey="start" endKey="end"
-                [(ngModel)]="selectedDate" class="form-control" />
-        </div>
+      <div class="col-md-6">
+        <select class="form-select" [(ngModel)]="selectedRestaurant" (change)="setRestaurantParams()">
+          <option [ngValue]="null" [disabled]="true">Select Restaurant</option>
+          <option [ngValue]="null">None</option>
+          <option *ngFor="let restaurant of restaurantList" [ngValue]='restaurant.ext_id'>{{restaurant.name}} --
+            {{restaurant.ext_id}}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <input type="text" ngxDaterangepickerMd (datesUpdated)="datesUpdated($event)" startKey="start" endKey="end"
+          [(ngModel)]="selectedDate" class="form-control" />
+      </div>
     </div>
-</div>
-<div class="container card shadow">
-    <table class="table table-borderless restaurantlist-table">
+  </div>
+  <div class="container card shadow">
+    <div class="no-order-text" *ngIf="!orderList">No Orders Found</div>
+    <div *ngIf="orderList">
+      <table class="table table-borderless restaurantlist-table">
         <thead>
-            <tr class="table-head-row">
-                <th>Order</th>
-                <th>Order Date/Time</th>
-                <th>Restaurant</th>
-                <th>Address</th>
-                <th>Price</th>
-            </tr>
+          <tr class="table-head-row">
+            <th>Order</th>
+            <th>Order Date/Time</th>
+            <th>Restaurant</th>
+            <th>Address</th>
+            <th>Price</th>
+          </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let order of orderList" class="order-row">
-                <td><a [routerLink]="['../order',order.ext_id]">{{order.ext_id}}</a></td>
-                <td>{{order.created | date : 'medium'}}</td>
-                <td>{{order.restaurant_name}}</td>
-                <td>{{order.restaurant_address}}</td>
-                <td>{{order.total_price}}</td>
-            </tr>
+          <tr *ngFor="let order of orderList" class="order-row">
+            <td><a [routerLink]="['../order',order.ext_id]">{{order.ext_id}}</a></td>
+            <td>{{order.created | date : 'medium'}}</td>
+            <td>{{order.restaurant_name}}</td>
+            <td>{{order.restaurant_address}}</td>
+            <td>{{order.total_price}}</td>
+          </tr>
         </tbody>
-    </table>
-    <div class="row" *ngIf="maxPage > 1">
+      </table>
+      <div class="row" *ngIf="maxPage > 1">
         <div class="pagination">
-            <button (click)="pageUpdate(currentPage-1)" *ngIf="currentPage > 1">&laquo;</button>
-            <ng-container *ngFor="let item of [].constructor(5); let i = index">
-                <button (click)="pageUpdate(i + 5 * this.multiplier +1)"
-                    [ngClass]="{'active': this.currentPage ==  i + 5 * this.multiplier +1}"
-                    *ngIf="i + 5 * this.multiplier + 1 <= maxPage">{{i + 5 * this.multiplier +1}}</button>
-            </ng-container>
-            <button (click)="pageUpdate(currentPage+1)" *ngIf="currentPage < maxPage">&raquo;</button>
+          <button (click)="pageUpdate(currentPage-1)" *ngIf="currentPage > 1">&laquo;</button>
+          <ng-container *ngFor="let item of [].constructor(5); let i = index">
+            <button (click)="pageUpdate(i + 5 * this.multiplier +1)"
+              [ngClass]="{'active': this.currentPage ==  i + 5 * this.multiplier +1}"
+              *ngIf="i + 5 * this.multiplier + 1 <= maxPage">{{i + 5 * this.multiplier +1}}</button>
+          </ng-container>
+          <button (click)="pageUpdate(currentPage+1)" *ngIf="currentPage < maxPage">&raquo;</button>
         </div>
+      </div>
     </div>
+  </div>
 </div>

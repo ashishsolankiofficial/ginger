@@ -17,6 +17,11 @@
     margin: 10px;
 }
 
+.no-restuarant-text {
+    padding: 40px;
+    text-align: center;
+}
+
 .table-head-row {
     text-align: center;
     border-bottom: 1px solid gray;
