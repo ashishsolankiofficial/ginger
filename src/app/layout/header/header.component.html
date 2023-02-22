@@ -1,43 +1,42 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a href="#" class="navbar-brand">
-        <div class="logo-name">
-            <div>
-                <img class="header-image" [src]="logosmall">
-            </div>
-            <div>
-                <div class="navbar-brand">Premium Delivery</div>
-            </div>
-        </div>
-    </a>
-    <div class="collapse navbar-collapse">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" [routerLink]="['/home-page/restaurants']"
-                [routerLinkActive]="['active']">Restaurants</a>
-            <a class="nav-item nav-link" [routerLink]="['/home-page/order']" [routerLinkActive]="['active']">Orders</a>
-        </div>
-        <div class="navbar-right">
-            <div class="navbar-select" *ngIf="isProductPage">
-                <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="restaurantList"
-                    [(ngModel)]="selectedRestaurant" placeholder="Select Restaurant"
-                    (onSelect)="onRestaurantSelect($event)" (onDeSelect)="onRestaurantDeselect($event)">
-                </ng-multiselect-dropdown>
-            </div>
-            <div class="navbar-cart">
-                <a class="cart-text" [routerLink]="['/home-page/cart']">
-                    <img class="cart-img" [src]="cartImg">
-                    <div>Cart</div>
-                </a>
-            </div>
-        </div>
+  <a href="#" class="navbar-brand">
+    <div class="logo-name">
+      <div>
+        <img class="header-image" [src]="logosmall">
+      </div>
+      <div>
+        <div class="navbar-brand">Premium Delivery</div>
+      </div>
     </div>
-    <div class=" dropdown">
-        <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40"
-                height="40" class="rounded-circle">
-        </button>
-        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button" (click)="logout()">Logout</button>
-        </div>
+  </a>
+  <div class="collapse navbar-collapse">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" [routerLink]="['/restaurants']" [routerLinkActive]="['active']">Restaurants</a>
+      <a class="nav-item nav-link" [routerLink]="['/order']" [routerLinkActive]="['active']">Orders</a>
     </div>
+    <div class="navbar-right">
+      <div class="navbar-select" *ngIf="isProductPage">
+        <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="restaurantList" [(ngModel)]="selectedRestaurant"
+          placeholder="Select Restaurant" (onSelect)="onRestaurantSelect($event)"
+          (onDeSelect)="onRestaurantDeselect($event)">
+        </ng-multiselect-dropdown>
+      </div>
+      <div class="navbar-cart">
+        <a class="cart-text" [routerLink]="['/cart']">
+          <img class="cart-img" [src]="cartImg">
+          <div>Cart</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class=" dropdown">
+    <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40"
+        height="40" class="rounded-circle">
+    </button>
+    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
+      <button class="dropdown-item" type="button" (click)="logout()">Logout</button>
+    </div>
+  </div>
 </nav>

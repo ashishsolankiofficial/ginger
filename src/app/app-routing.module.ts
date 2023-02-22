@@ -13,6 +13,7 @@ import { RestaurantFormComponent } from './pages/restaurant-form/restaurant-form
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { OrderPageComponent } from './pages/order-page/order-page.component';
 import { OrderlistPageComponent } from './pages/orderlist-page/orderlist-page.component';
+import { IntroPageComponent } from './pages/intro-page/intro-page.component';
 
 const routes: Routes = [
   {
@@ -28,8 +29,12 @@ const routes: Routes = [
       }]
   },
   {
-    path: 'home-page', component: HomePageComponent, canActivate: [AuthGuard],
+    path: '', component: HomePageComponent, canActivate: [AuthGuard],
     children: [
+      {
+        path: '',
+        component: IntroPageComponent,
+      },
       {
         path: 'restaurants',
         component: RestaurantlistPageComponent,
@@ -74,7 +79,7 @@ const routes: Routes = [
       },
     ]
   },
-  { path: '**', redirectTo: 'home-page' },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

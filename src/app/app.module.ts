@@ -24,12 +24,13 @@ import { TotalPricePipe } from './pipes/total-price.pipe';
 import { OrderPageComponent } from './pages/order-page/order-page.component';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { OrderlistPageComponent } from './pages/orderlist-page/orderlist-page.component';
+import { IntroPageComponent } from './pages/intro-page/intro-page.component';
 
 
 
 
 @NgModule({
-  declarations: [AppComponent, LoginPageComponent, HomePageComponent, RegisterFormComponent, LoginFormComponent, HeaderComponent, RestaurantPageComponent, ProductPageComponent, RestaurantlistPageComponent, ProductlistPageComponent, FooterComponent, RestaurantFormComponent, CartPageComponent, TotalPricePipe, OrderPageComponent, OrderlistPageComponent],
+  declarations: [AppComponent, LoginPageComponent, HomePageComponent, RegisterFormComponent, LoginFormComponent, HeaderComponent, RestaurantPageComponent, ProductPageComponent, RestaurantlistPageComponent, ProductlistPageComponent, FooterComponent, RestaurantFormComponent, CartPageComponent, TotalPricePipe, OrderPageComponent, OrderlistPageComponent, IntroPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

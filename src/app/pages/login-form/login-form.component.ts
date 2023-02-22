@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,13 +10,13 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  error: string;
 
+  error: string | undefined;
+  submitted: boolean = false;
   loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-
-  });
+    email: new FormControl('', [Validators.email, Validators.required]),
+    password: new FormControl('', Validators.required)
+  })
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -25,12 +25,17 @@ export class LoginFormComponent implements OnInit {
     this.router.navigate(['login-page/register']);
   }
 
+  get formControl() {
+    return this.loginForm.controls;
+  }
+
   login() {
-    const val = this.loginForm.value;
-    if (val.email && val.password) {
+    this.submitted = true;
+    if (this.loginForm.valid) {
+      let val = this.loginForm.value
       this.authService.login(val.email, val.password).subscribe(
         (response) => {
-          this.router.navigateByUrl('/home-page');
+          this.router.navigateByUrl('');
         },
         (error) => {
           this.error = error;
@@ -38,6 +43,8 @@ export class LoginFormComponent implements OnInit {
       );
     }
   }
+
+
 
 
   ngOnInit(): void {

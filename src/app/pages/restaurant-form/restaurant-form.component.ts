@@ -30,11 +30,11 @@ export class RestaurantFormComponent implements OnInit {
     data.city = this.cities.find((o: any) => o.ext_id == data.city)
     if (!this.addMode) {
       this.restaurantService.saveExistingResturant(this.ext_id, data).subscribe(resp => {
-        this.router.navigate(['home-page/restaurant/' + resp['ext_id']])
+        this.router.navigate(['restaurant/' + resp['ext_id']])
       }, error => console.warn(error))
     } else {
       this.restaurantService.saveResturant(data).subscribe(resp => {
-        this.router.navigate(['home-page/restaurant/' + resp['ext_id']])
+        this.router.navigate(['restaurant/' + resp['ext_id']])
       }, error => console.warn(error))
     }
   }
