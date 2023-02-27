@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
 import dayjs from 'dayjs';
-import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { OrderService } from 'src/app/services/order.service';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 
@@ -26,7 +25,7 @@ export class OrderlistPageComponent implements OnInit {
   orderParams: any = {}
 
 
-  constructor(private orderService: OrderService, private restaurantService: RestaurantService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private orderService: OrderService, private restaurantService: RestaurantService) { }
 
   setRestaurantParams() {
     if (this.selectedRestaurant) {
@@ -76,7 +75,5 @@ export class OrderlistPageComponent implements OnInit {
     this.orderParams['endDate'] = this.selectedDate['end'].format("YYYY-MM-DD")
     this.orderParams['page'] = 1
     this.orderParamsObservable.next(this.orderParams)
-
-
   }
 }

@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { RestaurantService } from '../../services/restaurant.service';
-import { AuthService } from 'src/app/services/auth.service';
-
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',

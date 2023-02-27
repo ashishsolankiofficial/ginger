@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
@@ -13,7 +12,6 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 })
 export class CartPageComponent implements OnInit {
   storedCart: any;
-  cartItems: any;
   allCart: any;
   restLookup: any = []
   prodFork: any;
@@ -23,13 +21,8 @@ export class CartPageComponent implements OnInit {
   iterCart: any = []
   error: any;
   emptyCart: boolean;
+
   constructor(private restaurantService: RestaurantService, private productService: ProductService, private cartService: CartService, private orderService: OrderService) { }
-
-  itemList = [{ name: 'one', quantity: 1, totalPrice: 1 }, { name: 'two', quantity: 2, totalPrice: 2 }]
-
-  ngOnInit(): void {
-    this.loadCart()
-  }
 
   onQuantityChange(ext_id: string, id: string, e: any) {
     this.cartService.addItem(ext_id, id, parseInt(e.value))
@@ -87,6 +80,10 @@ export class CartPageComponent implements OnInit {
     }, error => {
       console.error(error)
     })
+  }
+
+  ngOnInit(): void {
+    this.loadCart()
   }
 }
 

@@ -3,11 +3,11 @@
   <div *ngFor="let rest of iterCart">
     <div class="container card shadow cart-display">
       <div class="order-name-header">
-        <div class="order-name">
+        <div>
           <div class="row cart-restaurant-name">{{rest.restaurant.name}}</div>
           <div class="row cart-restarant-address">Address : {{rest.restaurant.address}}</div>
         </div>
-        <div class="order-delete"><button class="btn btn-danger" (click)="onOrderDelete(rest.restaurant.ext_id)">Delete
+        <div><button class="btn btn-danger" (click)="onOrderDelete(rest.restaurant.ext_id)">Delete
             Order</button></div>
       </div>
       <div class="row mb-3">

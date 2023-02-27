@@ -9,11 +9,6 @@
     margin-top: 20px;
 }
 
-.table-head-row {
-    text-align: center;
-    border-bottom: 1px solid gray;
-}
-
 .order-name-header {
     border-bottom: 1px solid black;
     padding: 15px 3px 15px 15px;
@@ -31,15 +26,20 @@
     padding-left: 0px;
 }
 
+.cart-table {
+    vertical-align: middle;
+    margin: 10px;
+}
+
+.table-head-row {
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+
 .item-row {
     border-bottom: 1px solid #e5e5e5;
     font-size: 14px;
     text-align: center;
-}
-
-.cart-table {
-    vertical-align: middle;
-    margin: 10px;
 }
 
 .item-name {
@@ -52,15 +52,15 @@
     justify-content: center;
 }
 
-.price-number {
-    font-size: 30px;
-    font-weight: 700;
-    width: auto;
-}
-
 .price-text {
     margin-top: 7px;
     font-size: 20px;
+    width: auto;
+}
+
+.price-number {
+    font-size: 30px;
+    font-weight: 700;
     width: auto;
 }
 
