@@ -44,14 +44,14 @@ tbody:before {
     padding-right: 10px;
 }
 
+.restaurant-thumbnail-container {
+    overflow: hidden;
+}
+
 .restaurant-name-label {
     font-weight: 700;
     text-decoration: none;
     color: black;
-}
-
-.restaurant-thumbnail-container {
-    overflow: hidden;
 }
 
 .restaurant-thumbnail {

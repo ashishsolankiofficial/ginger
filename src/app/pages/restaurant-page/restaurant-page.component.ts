@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, map, Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 
 @Component({

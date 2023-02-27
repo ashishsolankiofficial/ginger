@@ -8,8 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class UtilService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   getCities() {
     return this.http.get<any>(environment.apiUrl + environment.cityUrl).pipe(shareReplay())

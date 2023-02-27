@@ -20,11 +20,6 @@ export class LoginFormComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-
-  goToRegister() {
-    this.router.navigate(['login-page/register']);
-  }
-
   get formControl() {
     return this.loginForm.controls;
   }
@@ -43,9 +38,6 @@ export class LoginFormComponent implements OnInit {
       );
     }
   }
-
-
-
 
   ngOnInit(): void {
   }

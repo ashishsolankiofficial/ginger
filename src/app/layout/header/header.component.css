@@ -1,11 +1,11 @@
-.header-image {
-    width: auto;
-    height: 50px;
-}
-
 .logo-name {
     display: inline-flex;
     align-items: center;
+}
+
+.header-image {
+    width: auto;
+    height: 50px;
 }
 
 .navbar-collapse {
@@ -25,17 +25,12 @@
     margin: 0 0 0 20px;
 }
 
-.cart-img {
-    height: 30px;
-}
-
 .cart-text {
     font-size: 14px;
     text-decoration: none;
     color: black;
 }
 
-.order-button {
-    text-decoration: none;
-    color: rgb(18, 17, 17);
+.cart-img {
+    height: 30px;
 }

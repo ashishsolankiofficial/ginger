@@ -13,16 +13,16 @@
     border-bottom: 1px solid gray;
 }
 
+.no-order-text {
+    padding: 40px;
+    text-align: center;
+}
+
 tbody:before {
     line-height: 2em;
     content: ".";
     color: white;
     display: block;
-}
-
-.no-order-text {
-    padding: 40px;
-    text-align: center;
 }
 
 .order-row {

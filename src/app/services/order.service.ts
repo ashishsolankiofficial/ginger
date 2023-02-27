@@ -21,7 +21,7 @@ export class OrderService {
   }
 
   getOrderDetails(ext_id: any) {
-    return this.http.get<any>(environment.apiUrl + environment.orderUrl + ext_id).pipe(shareReplay());
+    return this.http.get<any>(environment.apiUrl + environment.orderUrl + ext_id + '/').pipe(shareReplay());
   }
 
 }

@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { RegisterFormComponent } from './pages/register-form/register-form.component';
 import { LoginFormComponent } from './pages/login-form/login-form.component';
 import { AuthGuard } from './guard/auth.guard';
 import { RestaurantPageComponent } from './pages/restaurant-page/restaurant-page.component';
-import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { RestaurantlistPageComponent } from './pages/restaurantlist-page/restaurantlist-page.component';
 import { ProductlistPageComponent } from './pages/productlist-page/productlist-page.component';
 import { RestaurantFormComponent } from './pages/restaurant-form/restaurant-form.component';
@@ -22,10 +20,6 @@ const routes: Routes = [
       {
         path: '',
         component: LoginFormComponent,
-      },
-      {
-        path: 'register',
-        component: RegisterFormComponent,
       }]
   },
   {

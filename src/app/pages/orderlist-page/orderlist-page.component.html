@@ -17,9 +17,9 @@
     </div>
   </div>
   <div class="container card shadow">
-    <div class="no-order-text" *ngIf="!orderList">No Orders Found</div>
-    <div *ngIf="orderList">
-      <table class="table table-borderless restaurantlist-table">
+    <div class="no-order-text" *ngIf="orderList.length < 1">No Orders Found</div>
+    <div *ngIf="orderList.length >= 1">
+      <table class="table table-borderless">
         <thead>
           <tr class="table-head-row">
             <th>Order</th>

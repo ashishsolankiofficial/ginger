@@ -46,7 +46,6 @@ export class RestaurantService {
   }
 
   saveExistingResturant(ext_id: string, data: any) {
-    console.log(data)
     return this.http.put<any>(environment.apiUrl + environment.restaurantUrl + ext_id + '/', data)
   }
 
