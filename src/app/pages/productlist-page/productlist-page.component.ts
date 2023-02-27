@@ -119,7 +119,6 @@ export class ProductlistPageComponent implements OnInit {
         this.loading = false;
         this.imgLoaded = false
         this.productData = resp.products
-        console.log(this.productData)
         this.maxPage = Math.floor(resp.count / 10) + 1
         let idArr = resp.products.map((p: any) => p.id)
         this.productService.getImages(idArr).subscribe(imgArr => {
