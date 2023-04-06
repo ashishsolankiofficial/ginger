@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  coversrc: string = "../../../assets/images/landingimg.png"
-  logosrc: string = "../../../assets/images/mainlogo.png"
+  coversrc: string = "assets/images/landingimg.png"
+  logosrc: string = "assets/images/mainlogo.png"
 
   constructor() { }
 

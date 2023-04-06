@@ -11,9 +11,9 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
 })
 export class HeaderComponent implements OnInit {
 
-  logosmall: string = "../../../assets/images/smalllogo.png"
-  cartImg: string = "../../../assets/images/cart.png"
-  noProfileImg = "../../../assets/images/no-profile-image.png"
+  logosmall: string = "assets/images/smalllogo.png"
+  cartImg: string = "assets/images/cart.png"
+  noProfileImg = "assets/images/no-profile-image.png"
   dropdownSettings: any
   selectedRestaurant: { ext_id: string; name: string; }[];
   isProductPage: boolean = false;
